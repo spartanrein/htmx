@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
           
         />
         <link rel="icon" href="/icon.png" />
+        <script src="/htmx.js" defer></script>
         <link rel="stylesheet" href="/main.css" />
       </head>
       <body>
