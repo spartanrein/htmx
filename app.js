@@ -55,12 +55,22 @@ app.post('/goals', (req, res) => {
   res.send(listItem(goalText, id))
 })
 
+app.delete('/goals/:idx', (req,res)=> {
+  const index = req.params.idx;
+  courseGoals.splice(index, 1)
+  res.send()
+})
+
 function listItem(goalText, id){
   return (
     `
       <li id="goal-${id}">
         <span>${goalText}</span>
-        <button>Remove</button>
+        <button
+          hx-delete="/goals/${id}"
+          hx-target="#goal-${id}"
+          hx-swap="outerHTML"
+        >Remove</button>
       </li>
     `
   )
