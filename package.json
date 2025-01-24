@@ -1,9 +1,9 @@
 {
-  "name": "essentials",
+  "name": "social-network",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node --watch app.js"
   },
