@@ -38,12 +38,7 @@ app.get('/', (req, res) => {
         <section>
           <ul id="goals">
           ${courseGoals.map(
-            (goal) => `
-            <li id="goal-${goal.id}">
-              <span>${goal.text}</span>
-              <button>Remove</button>
-            </li>
-          `
+            (goal) => listItem(goal.text, goal.id)
           ).join('')}
           </ul>
         </section>
@@ -57,12 +52,18 @@ app.post('/goals', (req, res) => {
   const goalText = req.body.goal;
   const id = new Date().getTime().toString()
   courseGoals.push({text:goalText, id: id})
-  res.send(`
-    <li id="goal-${id}">
-      <span>${goalText}</span>
-      <button>Remove</button>
-    </li>
-  `)
+  res.send(listItem(goalText, id))
 })
+
+function listItem(goalText, id){
+  return (
+    `
+      <li id="goal-${id}">
+        <span>${goalText}</span>
+        <button>Remove</button>
+      </li>
+    `
+  )
+}
 
 app.listen(3000);
